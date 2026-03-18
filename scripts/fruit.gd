@@ -7,17 +7,17 @@ var is_merging: bool = false
 
 ## Fruit definitions
 const FRUITS = [
-	{"name": "Cherry", "radius": 15, "color": Color(1, 0, 0), "score": 1},
-	{"name": "Strawberry", "radius": 25, "color": Color(1, 0.3, 0.3), "score": 3},
-	{"name": "Grape", "radius": 35, "color": Color(0.6, 0, 1), "score": 6},
-	{"name": "Dekopon", "radius": 45, "color": Color(1, 0.6, 0), "score": 10},
-	{"name": "Persimmon", "radius": 58, "color": Color(1, 0.5, 0), "score": 15},
-	{"name": "Apple", "radius": 72, "color": Color(1, 0.2, 0), "score": 21},
-	{"name": "Pear", "radius": 85, "color": Color(1, 0.9, 0.8), "score": 28},
-	{"name": "Peach", "radius": 100, "color": Color(1, 0.8, 0.8), "score": 36},
-	{"name": "Pineapple", "radius": 115, "color": Color(1, 1, 0), "score": 45},
-	{"name": "Melon", "radius": 135, "color": Color(0.5, 1, 0.5), "score": 55},
-	{"name": "Watermelon", "radius": 160, "color": Color(0, 1, 0), "score": 66}
+	{"name": "Cherry", "radius": 15, "file": "cherry.png", "score": 1},
+	{"name": "Strawberry", "radius": 25, "file": "strawberry.png", "score": 3},
+	{"name": "Grape", "radius": 35, "file": "grape.png", "score": 6},
+	{"name": "Dekopon", "radius": 45, "file": "dekopon.png", "score": 10},
+	{"name": "Persimmon", "radius": 58, "file": "persimmon.png", "score": 15},
+	{"name": "Apple", "radius": 72, "file": "apple.png", "score": 21},
+	{"name": "Pear", "radius": 85, "file": "pear.png", "score": 28},
+	{"name": "Peach", "radius": 100, "file": "peach.png", "score": 36},
+	{"name": "Pineapple", "radius": 115, "file": "pineapple.png", "score": 45},
+	{"name": "Melon", "radius": 135, "file": "melon.png", "score": 55},
+	{"name": "Watermelon", "radius": 160, "file": "watermelon.png", "score": 66}
 ]
 
 func setup(type: int):
@@ -33,11 +33,13 @@ func setup(type: int):
 	shape.radius = fruit_data.radius
 	$CollisionShape2D.shape = shape
 	
-	# Set visual size
-	$Sprite2D.scale = Vector2(fruit_data.radius * 2 / 64.0, fruit_data.radius * 2 / 64.0)
+	# Load sprite
+	var texture = load("res://assets/" + fruit_data.file)
+	$Sprite2D.texture = texture
 	
-	# Set color (temporary, until we have sprites)
-	modulate = fruit_data.radius * 2
+	# Scale sprite to match radius (original is 64x64)
+	var scale_factor = fruit_data.radius * 2 / 64.0
+	$Sprite2D.scale = Vector2(scale_factor, scale_factor)
 
 func get_radius() -> float:
 	return FRUITS[fruit_type].radius
