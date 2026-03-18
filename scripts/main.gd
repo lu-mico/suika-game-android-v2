@@ -1,6 +1,20 @@
 extends Node2D
 
 ## Game configuration
+const FRUITS = [
+	{"name": "Cherry", "radius": 15, "score": 1},
+	{"name": "Strawberry", "radius": 25, "score": 3},
+	{"name": "Grape", "radius": 35, "score": 6},
+	{"name": "Dekopon", "radius": 45, "score": 10},
+	{"name": "Persimmon", "radius": 58, "score": 15},
+	{"name": "Apple", "radius": 72, "score": 21},
+	{"name": "Pear", "radius": 85, "score": 28},
+	{"name": "Peach", "radius": 100, "score": 36},
+	{"name": "Pineapple", "radius": 115, "score": 45},
+	{"name": "Melon", "radius": 135, "score": 55},
+	{"name": "Watermelon", "radius": 160, "score": 66}
+]
+
 const WALL_THICKNESS = 20
 const DEAD_LINE_Y = 150
 const DROP_Y = 50
